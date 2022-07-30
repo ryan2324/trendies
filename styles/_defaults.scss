@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@100;300;400;500;600;700&display=swap');
+body, html, *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Saira', sans-serif;
+}
+$colors: ("primary": #C53A32, "font": #000, "title": #7C7A7A);
+$fweights: ("thin": 100, "light": 300, "regular": 400, "medium": 500, "semi-bold": 600, "bold": 700);

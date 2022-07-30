@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,+FAAI;AACZ,AAAA,IAAI,EAAE,IAAI,EAAE,CAAC,CAAA;EACT,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,UAAU;EACtB,WAAW,EAAE,mBAAmB;CACnC",
+    "sources": [
+        "product-page.scss",
+        "_defaults.scss"
+    ],
+    "names": [],
+    "file": "product-page.css"
+}

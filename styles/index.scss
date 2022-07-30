@@ -1,0 +1,1264 @@
+@import 'defaults';
+@mixin tablet() {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin mobile() {
+    @media screen and (max-width: 320px) {
+        @content;
+    }
+}
+nav{
+    .parent-ul{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 50px;
+    li{
+        list-style-type: none;
+        display: flex;
+        font-weight: map-get($fweights, "bold");
+        font-size: 18px;
+        
+        a{
+            display: flex;
+            color: map-get($colors, "title");
+            text-decoration: none;
+        }
+        
+    }
+    @include mobile(){
+        justify-content: end;
+        padding: 10px 20px;
+        .home-nav{
+            margin-right: auto;
+            a{
+                font-size: 14px;
+            }
+        }
+        .pages-nav{
+            display: none;
+        }
+        .user-nav{
+            i{
+                font-size: 20px;
+            }
+            .profile-menu-btn{
+                width: 28px;
+                height: 28px;
+                i{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .home-nav{
+        a{
+            color: map-get($colors, "primary" );
+            p:nth-child(1){
+                color: map-get($colors , "font");
+            }
+        }
+        
+    }
+    .pages-nav{
+        column-gap: 20px;
+        #home{
+            color: map-get($colors, "primary" );
+        }
+    }
+    }
+    .user-nav{
+        position: relative;
+        i{
+            color: map-get($colors, "primary");
+            font-size: 28px;
+        }
+        .cart-btn, .signup-link{
+            margin-left: 20px;
+        }
+        .signup-link{
+            color: map-get($colors, "primary" );
+        }
+        .profile-menu-btn{
+            background-color: transparent;
+            border: 2px solid #ccc;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            i{
+                font-size: 20px;
+            }
+        }
+        .profile-menu{
+            width: 250px;
+            height: 150px;
+            box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.23);
+            position: absolute;
+            right: 0;
+            top: 100%;
+            display: none;
+            padding: 12px;
+            background-color: #fff;
+            @include mobile(){
+                width: 150px;
+                height: 100px;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 100%;
+                li{
+                    display: flex;
+                    align-items: center;
+                    column-gap: 5px;
+                    padding: 6px 12px;
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: map-get($fweights, 'semi-bold' );
+                    &:hover{
+                        background-color: rgb(233, 233, 233);
+                    }
+                    @include mobile(){
+                     font-size: 12px;   
+                    }
+                    cursor: pointer;
+                    i{
+                        font-size: 24px;
+                        @include mobile(){
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+main{
+    .hero-img-container{
+        width: 60%;
+        margin: 50px auto;
+        @include mobile(){
+            width: 80%;
+        }
+        img{
+            width: 100%;
+        }
+    }
+    .brands-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 40px;    
+        @include mobile(){
+            row-gap: 20px;
+        }    
+        p{
+            color: map-get($colors, "title" );
+            font-size: 30px;
+            @include mobile(){
+                font-size: 24px;
+            }
+        }
+        div{
+            display: flex;
+            column-gap: 70px;
+            @include mobile(){
+                column-gap: 20px;
+            }
+            i{
+                font-size: 72px;
+                color: map-get($colors, "title" );
+                @include tablet(){
+                    font-size: 50px;
+                }
+                @include mobile(){
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+    .products-list-container{
+        padding: 0 10%;
+        margin-top: 100px;
+        @include tablet(){
+            padding: 0 5%;
+        }
+        @include mobile(){
+            margin-top: 50px;
+        }
+        .container-title{
+            color: map-get($colors, "title" );
+            font-size: 30px;
+            text-transform: capitalize;
+            @include mobile(){
+                font-size: 24px;
+            }
+        }
+        .products-container{
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 30px;
+            row-gap: 50px;
+            @include tablet(){
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @include mobile(){
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 10px;
+                row-gap: 10px;
+                margin-top: 20px;
+            }
+            .product{
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden;
+                position: relative;
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                // justify-content: flex-end;
+                box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.23);
+                border-radius: .5rem;
+                padding: 0 10px;
+                padding-top: 20px;
+                @include tablet(){
+                    height: 250px;
+                    width: 200px;
+                    
+                };
+                @include mobile(){
+                    height: 150px;
+                    width: 100%;
+                    padding: 0 5px;
+                    padding-top: 10px;
+                }
+                cursor: pointer;
+                .product-img-container{
+                    align-self: center;
+                    height: 150px;
+                    @include tablet(){
+                        height: 100px
+                    };
+                    @include mobile(){
+                        height: 70px;
+                    }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .details{
+                    padding: 3px 10px;
+                    display: flex;
+                    flex-direction: column;
+                    p{
+                        font-weight: map-get($fweights, "semi-bold" );
+                        padding: 0;
+                        margin: 0;
+                        text-transform: capitalize;
+                        @include tablet(){
+                            font-size: 12px;
+                            text-align: justify;
+                        };
+                        @include mobile(){
+                            font-size: 8px;
+                            line-height: 1;
+                        }
+                    }
+                }
+                .stocks-detail{
+                    margin-top: auto;
+                    display: flex;
+                    flex-direction: column;
+                    p{
+                        align-self: flex-end;
+                        font-size: 12px;
+                        color: map-get($colors, "title");
+                        margin-right: 5px;
+                        @include mobile(){
+                            font-size: 8px;
+                        }
+                    }
+                    .outer-bar{
+                        display: block;
+                        background-color: #ccc;
+                        height: 10px;
+                        border-radius: 35px;
+                        @include mobile(){
+                            height: 5px;
+                        }
+                        .inner-bar{
+                            display: block;
+                            background-color: map-get($colors, "primary" );
+                            width: 50%;
+                            height: 100%;
+                            border-radius: 35px;
+                            
+                        }
+                    }
+                    
+                }
+                .product-backdrop{
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($color: #000000, $alpha: .3);
+                    top: 0;
+                    left: 0;
+                }
+                &:hover{
+                    .product-backdrop{
+                        display: block;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+footer{
+    height: 50vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 200px;
+    padding-bottom: 100px;
+    justify-content: space-between;
+    @include tablet(){
+        padding: 0 50px;
+        padding-bottom: 20px;
+    }
+    @include mobile(){
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: end;
+        row-gap: 20px;
+    }
+    .subs{
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        @include mobile(){
+            align-items: center;
+            padding: 0 50px;
+        }
+        .socials{
+            p{
+                font-size: 24px;
+                color: map-get($colors, "title" );
+                @include tablet(){
+                    font-size: 16px;
+                }
+            }
+            ul{
+                display: flex;
+                column-gap: 20px;
+                li{
+                    list-style-type: none;
+                    font-size: 35px;
+                    color: map-get($colors, "primary" );
+                    @include tablet(){
+                        font-size: 25px;
+                    }
+                    @include mobile(){
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        form{
+            position: relative;
+            p{
+                color: map-get($colors, "title" );
+                font-size: 18px;
+                font-weight: map-get($fweights, "semi-bold" );
+                @include tablet(){
+                    font-size: 16px;
+                }
+            }
+            input{
+                padding: 6px 12px;
+                font-size: 18px;
+                border: 1px solid map-get($colors, "primary" );
+                border-right: transparent;
+                @include tablet(){
+                    font-size: 16px;
+                    padding: 5.5px 10px;
+                }
+                @include mobile(){
+                    font-size: 10px;
+                    margin-left: -25px;
+                }
+            }
+            button{
+                position: absolute;
+                left: 100%;
+                padding: 6px 12px;
+                border: 1px solid map-get($colors, "primary" );
+                border-left: transparent;
+                background-color: map-get($colors, "primary" );
+                @include tablet(){
+                    padding: 6px 10px;
+                }
+                @include mobile(){
+                    padding: 3px 6px;
+                    bottom: 0;
+                }
+                i{
+                    font-size: 27px;
+                    color: #fff;
+                    @include tablet(){
+                        font-size: 23px;
+                    }
+                    @include mobile(){
+                        font-size: 14px;
+                    }
+                }
+
+            }
+        }
+    }
+    .contact{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        p{
+            font-size: 35px;
+            color: map-get($colors, "title" );
+            font-weight: map-get($fweights, "bold" );
+        }
+        a{
+            color: map-get($colors, "title" );
+            text-decoration: underline;
+        }
+        @include tablet(){
+            margin-left: auto;
+            p{
+                font-size: 24px;
+                width: 50%;
+                text-align: center;
+            }
+        }
+        @include mobile(){
+            margin-left: 0;
+            p{
+                font-size: 14px;
+                width: 100%;
+            }
+            a{
+                font-size: 12px;
+            }
+        }
+    }
+}
+#disclaimer-bottom{
+    background-color: map-get($colors, "primary" );
+    display: block;
+    color: #fff;
+    text-align: center;
+    @include mobile(){
+        font-size: 7px;
+    }
+}
+#disclaimer-top{
+    background-color: map-get($colors, "title" );
+    display: block;
+    color: #fff;
+    text-align: center;
+    @include mobile(){
+        font-size: 7px;
+    }
+}
+
+.product-main{
+    padding: 100px;
+    @include tablet(){
+        padding: 50px;
+        
+    }
+    @include mobile(){
+        padding: 5%;
+    }
+    .product-container{
+        display: flex;
+        @include mobile(){
+            flex-direction: column;
+        }
+        .images-container{
+            display: flex;
+            background-color: #D9D9D9;
+            padding: 50px;
+            column-gap: 20px;
+            @include mobile(){
+                padding: 20px;
+            }
+            .small-images{
+                width: 100px;
+                height: 100px;
+                padding: 20px;
+                background-color: #fff;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include tablet(){
+                    width: 60px;
+                    height: 60px;
+                }
+                img{
+                    width: 40px;
+                    @include tablet(){
+                        width: 25px;
+                        
+                    }
+                }
+            }
+            .main-image-container{
+                width: 450px;
+                height: 450px;
+                padding: 50px;
+                background-color: #fff;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include tablet(){
+                    width: 150px;
+                    height: 200px;
+                }
+                img{
+                    width: 240px;
+                    @include tablet(){
+                        width: 100px;
+                        
+                    }
+                }
+            }
+        }
+        .product-detail-container{
+            flex-grow: 1;
+            display: flex;
+            padding: 50px;
+            flex-direction: column;
+            row-gap: 10px;
+            @include mobile(){
+                padding: 5%;
+            }
+            span{
+                height: 1px;
+                background-color: #ccc;
+            }
+            p{
+                font-size: 35px;
+                font-weight: map-get($fweights, "semi-bold" );
+                @include tablet(){
+                    font-size: 20px;
+                }
+            }
+            .delivery-info{
+                font-size: 16px;
+                font-weight: map-get($fweights, "light" );
+                color: map-get($colors, "title" );
+                @include tablet(){
+                    font-size: 14px;
+                }
+            }
+            button{
+                padding: 9px 18px;
+                background-color: map-get($colors, "primary" );
+                color: #fff;
+                font-weight: map-get($fweights, "semi-bold" );
+                border: transparent;
+                align-self: center;
+                cursor: pointer;
+                @include tablet(){
+                    padding: 6px 12px;
+                }
+                @include mobile(){
+                    padding: 3px 6px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .product-description-container{
+        width: 50%;
+        padding-top: 50px;
+        @include mobile(){
+            width: 100%;
+        }
+        .title{
+            font-size: 22px;
+            color: map-get($colors, "title" );
+            @include tablet(){
+                font-size: 18px;
+            }
+            
+        }
+        .description{
+            color: map-get($colors, "title" );
+            @include tablet(){
+                font-size: 14px;
+                
+            }
+        }
+
+    }
+}
+.backdrop{
+    background-color: rgba($color: #000000, $alpha: .3);
+    display: none;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    .cart{
+        background-color: #fff;
+        width: 50%;
+        position: absolute;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        left: 100%;
+        transition: all 400ms ease-in-out;
+        @include tablet(){
+            width: 80%;
+        }
+        @include mobile(){
+            width: 100%;
+        }    
+        .close-cart{
+            border: none;
+            background-color: transparent;
+            color: map-get($colors, "primary" );
+            align-self: flex-start;
+            padding: 12px;
+            cursor: pointer;
+            font-size: 24px;
+            @include mobile(){
+                font-size: 18px;
+            }
+        }
+        .container-title{
+            font-size: 28px;
+            font-weight: map-get($fweights, "semi-bold" );
+            margin: 10px 0;
+            @include mobile(){
+                font-size: 14px;
+            }
+        }
+        .cart-items{
+            width: 100%;
+            .names{
+                border-bottom: 1px solid #ccc;
+                padding: 0 50px;
+                padding-right: 150px;
+                padding-bottom: 20px;
+                display: flex;
+                font-size: 18px;
+                width: 100%;
+                column-gap: 80px;
+                p:nth-child(2){
+                    margin-left: auto;
+                }
+                @include mobile(){
+                    font-size: 12px;
+                    column-gap: 20px;
+                    padding: 0 10px;
+                } 
+            }
+            .product-list{
+                height: 300px;
+                overflow-y: scroll;
+                @include mobile(){
+                    height: 150px;
+                }
+                .product{
+                    display: flex;
+                    padding: 10px 20px;
+                    column-gap: 30px;
+                    align-items: center;
+                    border-bottom: 1px solid #ccc;
+                    position: relative;
+                    @include mobile(){
+                        column-gap: 10px;
+                    }
+                    div:nth-child(3){
+                        position: absolute;
+                        right: 280px;
+                        display: flex;
+                        column-gap: 10px;
+                        align-items: center;
+                        @include mobile(){
+                            right: 60px;
+                        }
+                        p{
+                            @include mobile(){
+                                font-size: 12px;
+                            }
+                        }
+                        button{
+                            padding: 3px 9px;
+                            font-weight: map-get($fweights, "semi-bold" );
+                            border: transparent;
+                            background-color: map-get($colors, "primary" );
+                            color: #fff;
+                            @include mobile(){
+                                padding: 1px 6px;
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                    p:nth-child(4){
+                        position: absolute;
+                        right: 120px;
+                        @include mobile(){
+                            right: 10px;
+                            font-size: 12px;
+                        }
+                    }
+                    .product-img-container{
+                        min-width: 50px;
+                        max-width: 50px;
+                        @include mobile(){
+                            min-width: 20px;
+                            max-width: 20px;
+                        }
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .title{
+                        max-width: 150px;
+                        @include mobile(){
+                            column-gap: 0;
+                            padding: 0;
+                            font-size: 8px;
+                            max-width: 100px;
+                        }
+                    }
+                    .delete{
+                        color: map-get($colors, "primary" );
+                        border: 1px solid map-get($colors, "primary" );
+                        background-color: transparent;
+                        padding: 3px 6px;
+                        cursor: pointer;
+                        position: absolute;
+                        right: 20px;
+                        @include mobile(){
+                            column-gap: 0;
+                            padding: 1px 3px;
+                            font-size: 8px;
+                            top: 0;
+                            right: 5px;
+                            border: transparent;
+                        }
+                    }
+                    .product-img-container{
+                        width: 50px;
+                        
+                        img{
+                            width: 100%;
+                            max-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        .cart-footer{
+            margin-top: auto;
+            padding: 50px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 50px;
+            @include mobile(){
+                row-gap: 20px;
+                padding: 10px;
+            }
+            div{
+                display: flex;
+                @include mobile(){
+                    align-items: center;
+                }
+                form{
+                    display: flex;
+                    width: 50%;
+                    border: 1px solid map-get($colors, "primary" );
+                    align-items: center;
+                    @include mobile(){
+                        border: transparent;
+                    }
+                    input{
+                        flex-grow: 1;
+                        padding: 3px 6px;
+                        font-size: 17px;
+                        border: transparent;
+                        @include mobile(){
+                            font-size: 12px;
+                            padding: 1px 3px;
+                            border: 1px solid map-get($colors, "primary" );
+                        }
+                        &:active, &:focus{
+                            outline: none;
+                        }
+                    }
+                    button{
+                        height: 100%;
+                        background-color: map-get($colors, "primary" );
+                        color: #fff;
+                        padding: 0 6px;
+                        border: transparent;
+                        line-height: 1;
+                        @include mobile(){
+                            font-size: 7px;
+                            padding: 1px 3px;
+                            
+                        }
+                    }
+                }
+                .total-container{
+                    display: flex;
+                    column-gap: 20px;
+                    padding: 6px 30px;
+                    font-size: 18px;
+                    font-weight: map-get($fweights, "medium" );
+                    border: 1px solid map-get($colors, "primary" );
+                    margin-left: auto;
+                    color: map-get($colors, "title" );
+                    @include mobile(){
+                        padding: 1px 3px;
+                        font-size: 12px;
+                        column-gap: 5px;
+                    }
+                }
+            }
+            #checkout-btn{
+                padding: 6px 12px;
+                font-size: 18px;
+                font-weight: map-get($fweights, "medium" );
+                background-color: map-get($colors, "primary" );
+                color: #fff;
+                align-self: center;
+                cursor: pointer;
+                border: transparent;
+                @include mobile(){
+                    font-size: 12px;
+                    padding: 1px 3px;
+                    
+                }
+            }
+        }
+    }
+}
+.checkout-main{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-top: 100px;
+    @include tablet(){
+        width: 90%;
+    }
+    @include mobile(){
+        flex-direction: column-reverse;
+    }
+    form{
+        width: 50%;
+        padding: 0 75px;
+        display: flex;
+        flex-direction: column;
+        
+        border-right: 2px solid #ccc;
+        @include tablet(){
+            padding: 0 10px;
+        }
+        @include mobile(){
+            width: 100%;
+            border: transparent;
+            border-top: 3px solid #ccc;
+            padding-top: 50px;
+        }
+        .form-names{
+            display: flex;
+            column-gap: 10px;
+            input{
+                width: 50%;
+            }
+        }
+        input{
+            border-radius: .25rem;
+            font-size: 18px;
+            padding: 6px 12px;
+            @include mobile(){
+                padding: 3px 6px;
+                font-size: 14px;
+            }
+        }
+        .payment-opt-title{
+            color: map-get($colors, "title" );
+            @include mobile(){
+                font-size: 14px;
+            }
+        }
+        .payment-option-container{
+            display: flex;
+            justify-content: center;
+            column-gap: 20px;
+            label{
+                height: 70px;
+                width: 75px;
+                position: relative;
+                font-size: 18px;
+                padding: 20px;
+                font-weight: map-get($fweights, "semi-bold" );
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include mobile(){
+                    height: 50px;
+                    width: 55px;
+                    font-size: 12px;
+                }
+                i{
+                    font-size: 50px;
+                    @include mobile(){
+                        font-size: 25px;
+                    }
+                }
+                span{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: .5rem;
+                    
+                }
+                input{
+                    display: none;
+                }
+                input[type='radio']:checked + span{
+                    border: 3px solid rgb(30, 102, 225);
+                }
+            }
+        }
+        #order-btn{
+            background-color: map-get($colors, "primary" );
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 18px;
+            font-weight: map-get($fweights, "semi-bold" );
+            align-self: center;
+            border: transparent;
+            cursor: pointer;
+            margin-top: 50px;
+            @include tablet(){
+                font-size: 15px;
+            }
+            @include mobile(){
+                font-size: 14px;
+                padding: 3px 6px;
+            }
+        }
+        .error-input{
+            margin-bottom: 15px;
+            color: red;
+            font-size: 12px;
+        }
+    }
+    .orders{
+        border-left: 2px solid #ccc;
+        width: 50%;
+        @include mobile(){
+            border: transparent;
+            width: 100%;
+        }
+        .container-title{
+            font-size: 35px;
+            text-align: center;
+            color: map-get($colors, "title" );
+            @include mobile(){
+                font-size: 20px;
+            }
+        }
+        .names{
+            display: flex;
+            padding: 0 50px;
+            column-gap: 120px;
+            color: map-get($colors, "title" );
+            padding-left: 70px;
+            border-bottom: 1px solid #ccc;
+            @include tablet(){
+                column-gap: 20px;
+                padding-left: 20px;
+                p:nth-child(2){
+                    margin-left: 85px;
+                }
+            }
+            @include mobile(){
+                column-gap: 30px;
+                font-size: 14px;
+            }
+            p:nth-child(2){
+                margin-left: auto;
+                @include mobile(){
+                    margin-left: 30px;
+                }
+            }
+            
+        }
+        .order-items{
+            .product{
+                display: flex;
+                align-items: center;
+                padding: 5px 40px;
+                column-gap: 50px;
+                border-bottom: 1px solid #ccc;
+                @include tablet(){
+                    column-gap: 10px;
+                    padding: 10px;
+                    p:nth-child(2){
+                        font-size: 12px;
+                    }
+                }
+                @include mobile(){
+                    p:nth-child(2){
+                        max-width: 90px;
+                    }
+                }
+                .product-img-container{
+                    width: 50px;
+                    img{
+                        width: 100%;
+                    }
+                }
+                p:nth-child(3){
+                    margin-left: auto;
+                    margin-right: 100px;
+                }
+                .title{
+                    max-width: 170px;
+                }
+            }
+        }
+        .order-footer{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 50px;
+            @include mobile(){
+                padding: 0;
+                padding: 20px 0;
+            }
+            div{
+                width: 250px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                p{
+                    color: map-get($colors, "title" );
+                    font-size: 18px;
+                    font-weight: map-get($fweights, "semi-bold" );
+                    @include tablet(){
+                        font-size: 14px;
+                    }
+                    
+                }
+            
+                // &:nth-child(3){
+                //     font-size: 20px;
+                // }
+            }
+        }
+    }
+}
+.login-main{
+    height: 100vh;
+    display: flex;
+    
+    .brand-section{
+        width: 30%;
+        height: 100%;
+        background-color: map-get($colors, "primary" );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include mobile(){
+            display: none;
+        }
+        .logo{
+            display: flex;
+            p{
+                font-weight: map-get($fweights, "bold" );
+                font-size: 28px;
+                
+            }
+            p:nth-child(2){
+                color: #fff;
+            }
+        }
+        .desc{
+            font-size: 18px;
+            color: #fff;
+            @include tablet(){
+                text-align: center;
+            }
+        }
+    }
+    .form-container{
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include mobile(){
+            width: 100%;
+            padding: 0 10%;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+            .title{
+                align-self: center;
+                font-size: 24px;
+                font-weight: map-get($fweights, "semi-bold" );
+            }
+            label{
+                font-weight: map-get($fweights, "medium" );
+            }
+            input{
+                padding: 6px 12px;
+                font-size: 18px;
+                @include tablet(){
+                    font-size: 16px;
+                }
+            }
+            a{
+                align-self: flex-end;
+                margin-bottom: 20px;
+                color: #000;
+                text-decoration: none;
+            }
+            input[type='submit']{
+                background-color: map-get($colors, "primary" );
+                color: #fff;
+                border: transparent;
+                cursor: pointer;
+                font-weight: map-get($fweights, "medium" );
+            }
+            .error-input{
+                margin-bottom: 10px;
+                color: red;
+                font-size: 12px;
+            }
+            .signup-link{
+                margin-top: 10px;
+                align-self: center;
+                text-decoration: underline;
+            }
+        }
+    }
+    
+}
+.signup-main{
+    height: 100vh;
+    display: flex;
+    .brand-section{
+        width: 30%;
+        height: 100%;
+        background-color: map-get($colors, "primary" );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include mobile(){
+            display: none;                
+        }
+        .logo{
+            display: flex;
+            p{
+                font-weight: map-get($fweights, "bold" );
+                font-size: 28px;
+            }
+            p:nth-child(2){
+                color: #fff;
+            }
+        }
+        .desc{
+            font-size: 18px;
+            color: #fff;
+            @include tablet(){
+                text-align: center;
+            }
+        }
+    }
+    .form-container{
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include mobile(){
+            width: 100%;
+            padding: 10%;               
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+            .title{
+                align-self: center;
+                font-size: 24px;
+                font-weight: map-get($fweights, "semi-bold" );
+            }
+            label{
+                font-weight: map-get($fweights, "medium" );
+            }
+            input{
+                padding: 6px 12px;
+                font-size: 18px;
+                @include tablet(){
+                    font-size: 16px;
+                }
+            }
+            // input:nth-child(3){
+            //     margin-bottom: 10px;
+            // }
+            .name{
+                display: flex;
+                column-gap: 10px;
+                input{
+                    width: 50%;
+                }
+            }
+            .error-input{
+                margin-bottom: 10px;
+                color: red;
+                font-size: 12px;
+            }
+            a{
+                align-self: flex-end;
+                margin-bottom: 20px;
+                color: #000;
+                text-decoration: none;
+            }
+            input[type='submit']{
+                background-color: map-get($colors, "primary" );
+                color: #fff;
+                border: transparent;
+                cursor: pointer;
+                font-weight: map-get($fweights, "medium" );
+            }
+    }
+    }
+    
+}
